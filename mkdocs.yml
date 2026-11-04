@@ -1,0 +1,40 @@
+site_name: RESONATE
+site_description: Predict genes never measured in a spatial transcriptomics panel
+site_url: https://J041120h.github.io/resonate/
+repo_url: https://github.com/J041120h/resonate
+repo_name: J041120h/resonate
+theme:
+  name: material
+  features: [navigation.sections, navigation.top, content.code.copy, search.suggest]
+  palette:
+    - scheme: default
+      primary: indigo
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Quickstart tutorial: tutorial.ipynb
+  - Inputs and outputs: inputs-outputs.md
+  - Choosing a reference and embeddings: choosing-reference-and-embeddings.md
+  - How the model works: method.md
+  - Equivalence with the paper model: equivalence.md
+  - Command line: cli.md
+  - API reference: api.md
+  - FAQ: faq.md
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false           # the notebook is executed ahead of time (docs/tutorial.ipynb carries its outputs)
+      include_source: true
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options: { show_source: false, docstring_style: google, show_root_heading: true, members_order: source }
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.arithmatex: { generic: true }
+  - toc: { permalink: true }
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
