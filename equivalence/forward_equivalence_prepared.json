@@ -1,0 +1,22 @@
+{
+ "device": "cuda",
+ "deployed_summary_topn_pearson": 0.4394833871548261,
+ "deployed_inputs": {
+  "max_abs_diff_vs_deployed_pred": 0.0,
+  "mean_abs_diff": 0.0,
+  "pearson_flat": 0.9999999999999999,
+  "topn_pearson": 0.4394833875026501,
+  "topn_spearman": 0.35500110340647045,
+  "topn_mse": 0.25838931939323095,
+  "n_topn": 47
+ },
+ "package_inputs": {
+  "max_abs_diff_vs_deployed_pred": 0.501645565032959,
+  "mean_abs_diff": 0.0016761719016358256,
+  "pearson_flat": 0.999831013114349,
+  "topn_pearson": 0.4395549940040607,
+  "topn_spearman": 0.3548597459845752,
+  "topn_mse": 0.2584104018885235,
+  "n_topn": 47
+ }
+}
