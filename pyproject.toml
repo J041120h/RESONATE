@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resonate-st"                      # `resonate` is taken on PyPI (a different project); import name stays `resonate`
+version = "0.1.0.dev0"
+description = "RESONATE: predict genes never measured in a spatial transcriptomics panel from a matched single-cell reference"
+readme = "README.md"
+requires-python = ">=3.10"
+# license = ...   # set after the PI chooses the licence (see LICENSE)
+authors = [{ name = "AUTHOR_NAME", email = "hjiang55@jh.edu" }]
+keywords = ["spatial transcriptomics", "gene imputation", "single-cell", "deep learning"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+  "numpy>=1.24,<2",
+  "scipy>=1.10",
+  "pandas>=1.5",
+  "scikit-learn>=1.2",
+  "torch>=2.1",
+  "anndata>=0.10",
+  "scanpy>=1.10,<1.12",
+  "pynndescent<0.7",             # 0.7 returns scipy sparse arrays that scanpy 1.11 cannot read
+  "harmonypy>=0.0.9",
+  "igraph>=0.10",
+  "leidenalg>=0.10",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+docs = ["mkdocs-material", "mkdocstrings[python]", "mkdocs-jupyter", "pymdown-extensions<12"]
+notebook = ["jupyter", "nbclient", "ipykernel", "matplotlib"]
+
+[project.scripts]
+resonate = "resonate.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/J041120h/resonate"
+Documentation = "https://J041120h.github.io/resonate/"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: end-to-end tests (minutes on CPU)", "gpu: needs CUDA"]

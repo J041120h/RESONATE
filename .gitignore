@@ -1,0 +1,16 @@
+__pycache__/
+*.egg-info/
+build/
+dist/
+site/
+.pytest_cache/
+.ipynb_checkpoints/
+equivalence/work/
+equivalence/logs/
+*.pt
+*.out
+.cache/
+site/
+equivalence/deployed_code_runs/*/*
+!equivalence/deployed_code_runs/*/summary.json
+!equivalence/deployed_code_runs/*/summary_stage1.json
