@@ -1,0 +1,16 @@
+{
+ "spatial_cells": 12000,
+ "spatial_genes": 236,
+ "reference_cells": 8011,
+ "reference_genes": 2244,
+ "embedding_genes": 2244,
+ "embedding_dim": 512,
+ "held_out_genes": 48,
+ "window_half_width_um": 824.9760372239507,
+ "section": "R78_4C12",
+ "splits": {
+  "test": 1135,
+  "train": 9600,
+  "val": 1265
+ }
+}
