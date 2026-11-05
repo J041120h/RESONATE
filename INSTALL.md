@@ -91,8 +91,8 @@ Measured with the package on Linux (peak memory = maximum resident set size of t
 
 | workload | memory | time |
 |---|---|---|
-| sample data, quick start of the README (CPU, at most 12 epochs per stage) | **16 GB RAM or more recommended** (peak about 11 GiB) | QUICKSTART_TIME |
-| sample data, default training on the CPU (up to 500 epochs, early stopping) | same | `fit` about 19 min on 5 CPU cores |
+| sample data, quick start of the README (CPU, at most 12 epochs per stage) | **16 GB RAM or more recommended** (peak 10.1 GiB) | about 10 min on 4 CPU cores (`prepare` about 1 min, `fit` about 9 min) |
+| sample data, default training on the CPU (up to 500 epochs, early stopping) | peak about 11 GiB | `fit` about 19 min on 5 CPU cores |
 | MERFISH fetal heart, full dataset (250,926 spatial cells, 73,248 reference cells, 236 genes) | `prepare`: peak about 13 GB RAM | `prepare` about 33 min on 8 CPU cores; `fit` 11-14 min on one NVIDIA L40S GPU |
 
 A GPU is not needed for the sample data. For datasets of the size of the paper's (hundreds of thousands of cells), use a

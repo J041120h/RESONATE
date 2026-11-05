@@ -28,15 +28,3 @@ authors:
   - family-names: Chitra
     given-names: Uthsav
     affiliation: "Department of Computer Science, Whiting School of Engineering; Data Science and AI Institute; Center for Computational Biology, Johns Hopkins University, Baltimore, MD, USA"
-preferred-citation:
-  type: article
-  title: "Predicting unmeasured features in spatial omics with single-cell references and gene embeddings"
-  status: in-preparation
-  year: 2026
-  authors:
-    - family-names: Jiang
-      given-names: Harry
-    - family-names: Ji
-      given-names: Hongkai
-    - family-names: Chitra
-      given-names: Uthsav
