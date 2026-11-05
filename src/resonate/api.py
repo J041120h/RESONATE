@@ -84,7 +84,7 @@ class Resonate:
         A.obs["split"] = split_all[cells]
         A.var["is_fit_target"] = [g in tg for g in genes]
         A.uns["resonate"] = dict(lambda_=float(net.a_scale), note="log1p of counts normalised to the median measured-gene "
-                                 "library; see docs/inputs-outputs")
+                                 "library; see https://j041120h.github.io/RESONATE_tutorial/ (inputs and outputs)")
         return A
 
     # ------------------------------------------------------------------------------------------------------------------

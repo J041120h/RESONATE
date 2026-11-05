@@ -1,23 +1,65 @@
 {
-  "_comment": "DRAFT for the Zenodo REST API / web form. Nothing has been uploaded. Replace every PLACEHOLDER before publishing.",
+  "_comment": "DRAFT for the Zenodo REST API / web form; nothing has been deposited. Before depositing: add ORCIDs if wanted, and add the manuscript DOI as an 'isSupplementTo' related identifier once it exists.",
   "metadata": {
     "upload_type": "dataset",
     "title": "RESONATE tutorial sample data: MERFISH human fetal heart subsample with matched scRNA-seq reference and scGPT-spatial gene embeddings",
     "version": "0.1.0",
-    "description": "<p>Small sample data (about 12 MB) for the tutorial of the RESONATE software (https://github.com/J041120h/resonate), which predicts genes never measured in a spatial transcriptomics panel from a matched single-cell reference and gene embeddings.</p><p>Contents: (1) a 12,000-cell spatial window of a 13 PCW human fetal heart MERFISH section (236-gene panel; raw counts, authors' cell-type annotation); (2) a stratified 8,011-cell subsample of the matched scRNA-seq reference restricted to 2,244 genes; (3) the matching rows of the scGPT-spatial token-embedding table; (4) the list of 48 held-out genes used in the tutorial benchmark. Spatial data and reference derive from Farah et al., Nature 2024 (Dryad doi:10.5061/dryad.w0vt4b8vp, Zenodo 10420367, CC0 1.0); embeddings derive from scGPT-spatial V1 (figshare doi:10.6084/m9.figshare.28356068, CC BY 4.0).</p>",
+    "description": "<p>Small sample data (about 12 MB) for the tutorial of the RESONATE software (https://github.com/J041120h/RESONATE), which predicts genes never measured in a spatial transcriptomics panel from a matched single-cell reference and gene embeddings.</p><p>Contents: (1) a 12,000-cell spatial window of a 13 PCW human fetal heart MERFISH section (236-gene panel; raw counts, authors' cell-type annotation); (2) a stratified 8,011-cell subsample of the matched scRNA-seq reference restricted to 2,244 genes; (3) the matching rows of the scGPT-spatial token-embedding table; (4) the list of 48 held-out genes used in the tutorial benchmark. Spatial data and reference derive from Farah et al., Nature 2024 (Dryad doi:10.5061/dryad.w0vt4b8vp, Zenodo 10420367, CC0 1.0); embeddings derive from scGPT-spatial V1 (figshare doi:10.6084/m9.figshare.28356068, CC BY 4.0).</p>",
     "creators": [
-      { "name": "AUTHOR_NAME, AUTHOR_NAME", "affiliation": "AFFILIATION_PLACEHOLDER", "orcid": "ORCID_PLACEHOLDER" }
+      {
+        "name": "Jiang, Harry",
+        "affiliation": "Johns Hopkins University"
+      },
+      {
+        "name": "Ji, Hongkai",
+        "affiliation": "Johns Hopkins Bloomberg School of Public Health"
+      },
+      {
+        "name": "Chitra, Uthsav",
+        "affiliation": "Johns Hopkins University"
+      }
     ],
     "access_right": "open",
     "license": "cc-by-4.0",
-    "keywords": ["spatial transcriptomics", "MERFISH", "gene imputation", "single-cell RNA-seq", "fetal heart", "tutorial data"],
+    "keywords": [
+      "spatial transcriptomics",
+      "MERFISH",
+      "gene imputation",
+      "single-cell RNA-seq",
+      "fetal heart",
+      "tutorial data"
+    ],
     "related_identifiers": [
-      { "identifier": "https://github.com/J041120h/resonate", "relation": "isSupplementTo", "scheme": "url", "resource_type": "software" },
-      { "identifier": "10.1038/s41586-024-07171-z", "relation": "isDerivedFrom", "scheme": "doi", "resource_type": "publication-article" },
-      { "identifier": "10.5061/dryad.w0vt4b8vp", "relation": "isDerivedFrom", "scheme": "doi", "resource_type": "dataset" },
-      { "identifier": "10.6084/m9.figshare.28356068", "relation": "isDerivedFrom", "scheme": "doi", "resource_type": "software" },
-      { "identifier": "10.1101/2025.02.05.636714", "relation": "references", "scheme": "doi", "resource_type": "publication-preprint" },
-      { "identifier": "MANUSCRIPT_DOI_PLACEHOLDER", "relation": "isSupplementTo", "scheme": "doi", "resource_type": "publication-article" }
+      {
+        "identifier": "https://github.com/J041120h/RESONATE",
+        "relation": "isSupplementTo",
+        "scheme": "url",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "10.1038/s41586-024-07171-z",
+        "relation": "isDerivedFrom",
+        "scheme": "doi",
+        "resource_type": "publication-article"
+      },
+      {
+        "identifier": "10.5061/dryad.w0vt4b8vp",
+        "relation": "isDerivedFrom",
+        "scheme": "doi",
+        "resource_type": "dataset"
+      },
+      {
+        "identifier": "10.6084/m9.figshare.28356068",
+        "relation": "isDerivedFrom",
+        "scheme": "doi",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "10.1101/2025.02.05.636714",
+        "relation": "references",
+        "scheme": "doi",
+        "resource_type": "publication-preprint"
+      }
     ],
     "references": [
       "Farah, E. N. et al. Spatially organized cellular communities form the developing human heart. Nature 627, 854-864 (2024). doi:10.1038/s41586-024-07171-z",

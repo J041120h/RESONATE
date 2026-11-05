@@ -29,7 +29,7 @@ class Prepared:
     """Output of :func:`prepare`. Plain numpy arrays; ``save`` / ``load`` round-trip them.
 
     Gene axis G = measured genes (``vis``) followed by target genes (``targets``) unless a ``gene_order`` was given.
-    Attributes are documented in ``docs/inputs-outputs.md``."""
+    Attributes are documented in the online documentation (https://j041120h.github.io/RESONATE_tutorial/)."""
 
     def __init__(self, **kw):
         self.__dict__.update(kw)

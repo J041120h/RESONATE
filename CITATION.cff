@@ -1,11 +1,42 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: "If you use this software, please cite it as below. The accompanying paper is in preparation (no DOI yet)."
 title: "RESONATE"
 type: software
-version: 0.1.0.dev0
+version: 0.1.0
+date-released: "2026-11-05"
+license: MIT
+repository-code: "https://github.com/J041120h/RESONATE"
+url: "https://j041120h.github.io/RESONATE_tutorial/"
+abstract: >-
+  RESONATE (REconstructing Spatial Omics via Neighborhood, Atlas Transfer and Embeddings) predicts genes that a
+  spatial transcriptomics panel did not measure, by combining expression in similar cells of a matched single-cell
+  reference, the gene's relationships with measured genes and information from spatial neighbors, with every gene
+  represented by its foundation-model embedding.
+keywords:
+  - spatial transcriptomics
+  - gene imputation
+  - single-cell reference
+  - foundation models
 authors:
-  - family-names: "AUTHOR_NAME"
-    given-names: "AUTHOR_NAME"
-    email: "hjiang55@jh.edu"
-repository-code: "https://github.com/J041120h/resonate"
-# preferred-citation: add the manuscript reference when available
+  - family-names: Jiang
+    given-names: Harry
+    email: hjiang55@jh.edu
+    affiliation: "Whiting School of Engineering, Johns Hopkins University, Baltimore, MD, USA"
+  - family-names: Ji
+    given-names: Hongkai
+    affiliation: "Department of Biostatistics, Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA"
+  - family-names: Chitra
+    given-names: Uthsav
+    affiliation: "Department of Computer Science, Whiting School of Engineering; Data Science and AI Institute; Center for Computational Biology, Johns Hopkins University, Baltimore, MD, USA"
+preferred-citation:
+  type: article
+  title: "Predicting unmeasured features in spatial omics with single-cell references and gene embeddings"
+  status: in-preparation
+  year: 2026
+  authors:
+    - family-names: Jiang
+      given-names: Harry
+    - family-names: Ji
+      given-names: Hongkai
+    - family-names: Chitra
+      given-names: Uthsav

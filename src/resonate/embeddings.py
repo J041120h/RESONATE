@@ -126,7 +126,8 @@ def extract_scgpt_spatial(checkpoint_dir, out_path=None, genes=None) -> GeneEmbe
 
 
 # ---------------------------------------------------------------------------------------------------------------------
-# downloadable tables (filled in when the files are deposited; see RELEASE_CHECKLIST.md)
+# downloadable tables (URL and checksum are filled in once the table is deposited; until then build it with
+# extract_scgpt_spatial from the scGPT-spatial checkpoint)
 EMBEDDING_REGISTRY = {
     "scgpt_spatial_human": dict(url="https://zenodo.org/records/ZENODO_RECORD_ID/files/scgpt_spatial_human.npz",
                                 sha256=None, size_mb=70),

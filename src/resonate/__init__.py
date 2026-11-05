@@ -18,7 +18,7 @@ from .prep.pipeline import Prepared, prepare
 try:
     __version__ = version("resonate-st")
 except PackageNotFoundError:          # running from a source tree
-    __version__ = "0.1.0.dev0"
+    __version__ = "0.1.0"
 
 __all__ = ["prepare", "fit", "predict", "Resonate", "Prepared", "Config", "GeneEmbeddings", "load_gene_embeddings",
            "extract_scgpt_spatial", "download_embeddings", "score_heldout", "__version__"]

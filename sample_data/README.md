@@ -1,6 +1,7 @@
 # RESONATE tutorial sample data (MERFISH human fetal heart)
 
-Prepared for a Zenodo deposit (not uploaded). About 12 MB. Used by `docs/tutorial.ipynb`.
+Small sample data (about 12 MB) for the quick start in the main `README.md` and the tutorial at
+<https://j041120h.github.io/RESONATE_tutorial/>. It runs on a CPU.
 
 | file | content |
 |---|---|
@@ -9,8 +10,24 @@ Prepared for a Zenodo deposit (not uploaded). About 12 MB. Used by `docs/tutoria
 | `scgpt_spatial_embeddings_subset.npz` | scGPT-spatial token embeddings (512 dimensions) of the 2,244 genes above (`genes`, `embeddings`) |
 | `held_out_genes.txt` | the 48 panel genes held out in the tutorial's benchmark (held-out set 0 of the paper) |
 | `sample_info.json`, `SHA256SUMS` | counts and checksums |
+| `zenodo_metadata.json` | draft metadata for a future Zenodo deposit of these files (not yet deposited) |
 
-Built by `dev/make_sample_data.py` from the QC'd paper inputs of the MERFISH fetal-heart panel.
+The spatial window and the reference subsample were cut from the quality-controlled inputs of the paper's MERFISH
+fetal-heart dataset.
+
+## Download
+
+The files are part of this repository. Either clone it (`git clone https://github.com/J041120h/RESONATE.git`; the
+files are in `RESONATE/sample_data/`) or download single files:
+
+```bash
+BASE=https://raw.githubusercontent.com/J041120h/RESONATE/main/sample_data
+for f in fetal_heart_spatial.h5ad fetal_heart_reference.h5ad scgpt_spatial_embeddings_subset.npz \
+         held_out_genes.txt sample_info.json SHA256SUMS; do
+  curl -fsSLO "$BASE/$f"
+done
+sha256sum -c SHA256SUMS          # every line must end in "OK"
+```
 
 ## Provenance, licence, citation
 
@@ -21,9 +38,10 @@ Built by `dev/make_sample_data.py` from the QC'd paper inputs of the MERFISH fet
   (Zenodo API metadata `license: cc-zero`, checked 2026-11-04; Dryad deposits are CC0). Redistribution of the subsample is
   permitted; please still cite the paper. Changes: QC, subsampling, restriction to genes, int16 storage.
 * **Gene embeddings**: rows of the token-embedding table of scGPT-spatial V1 (Wang, C. *et al.* scGPT-spatial: Continual
-  Pretraining of Single-Cell Foundation Model for Spatial Transcriptomics, bioRxiv 2025, doi:10.1101/2025.02.05.636714). Weights: figshare
-  doi:10.6084/m9.figshare.28356068 (**CC BY 4.0**, API metadata checked 2026-11-04); code: MIT. Attribution is required;
-  the rows are unmodified copies.
+  Pretraining of Single-Cell Foundation Model for Spatial Transcriptomics, bioRxiv 2025, doi:10.1101/2025.02.05.636714).
+  Weights: figshare doi:10.6084/m9.figshare.28356068 (**CC BY 4.0**, API metadata checked 2026-11-04); code: MIT.
+  The rows are unmodified copies; if you use or redistribute `scgpt_spatial_embeddings_subset.npz`, attribute
+  scGPT-spatial as required by CC BY 4.0.
 
-The Zenodo record that contains both parts is proposed under **CC BY 4.0** (CC0 data may be bundled under CC BY); see
-`zenodo_metadata.json`.
+The RESONATE code is under the MIT licence (`../LICENSE`); the files in this folder keep the licences above (data CC0 1.0,
+embedding rows CC BY 4.0).

@@ -1,19 +1,28 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "resonate-st"                      # `resonate` is taken on PyPI (a different project); import name stays `resonate`
-version = "0.1.0.dev0"
-description = "RESONATE: predict genes never measured in a spatial transcriptomics panel from a matched single-cell reference"
+name = "resonate-st"                      # `resonate` is taken on PyPI (a different project); the import name is `resonate`
+version = "0.1.0"
+description = "RESONATE: predict genes never measured in a spatial transcriptomics panel from a matched single-cell reference and gene embeddings"
 readme = "README.md"
 requires-python = ">=3.10"
-# license = ...   # set after the PI chooses the licence (see LICENSE)
-authors = [{ name = "AUTHOR_NAME", email = "hjiang55@jh.edu" }]
-keywords = ["spatial transcriptomics", "gene imputation", "single-cell", "deep learning"]
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Harry Jiang", email = "hjiang55@jh.edu" },
+  { name = "Hongkai Ji" },
+  { name = "Uthsav Chitra" },
+]
+keywords = ["spatial transcriptomics", "gene imputation", "single-cell", "foundation models", "deep learning"]
 classifiers = [
-  "Programming Language :: Python :: 3",
+  "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
 dependencies = [
@@ -32,15 +41,16 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest"]
-docs = ["mkdocs-material", "mkdocstrings[python]", "mkdocs-jupyter", "pymdown-extensions<12"]
-notebook = ["jupyter", "nbclient", "ipykernel", "matplotlib"]
+notebook = ["jupyter", "ipykernel", "matplotlib"]   # to run the tutorial notebook
 
 [project.scripts]
 resonate = "resonate.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/J041120h/resonate"
-Documentation = "https://J041120h.github.io/resonate/"
+Homepage = "https://github.com/J041120h/RESONATE"
+Documentation = "https://j041120h.github.io/RESONATE_tutorial/"
+Repository = "https://github.com/J041120h/RESONATE"
+Issues = "https://github.com/J041120h/RESONATE/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
