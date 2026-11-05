@@ -1,0 +1,69 @@
+{
+ "description": "Deployed research code (the model used in the paper), MERFISH fetal heart, held-out set 0, same training flags, seeds 0-2. Seed 0 is the paper's run for this held-out set. Scores are on the test cells, top-N genes.",
+ "device": "cuda",
+ "runs": {
+  "0": {
+   "seed": 0,
+   "paper_run": true,
+   "topn_pearson": 0.4394833871548261,
+   "topn_spearman": 0.3550008110016033,
+   "topn_mse": 0.25838932159107314,
+   "n_topn": 47,
+   "stage1": {
+    "n_epochs": 144,
+    "best_epoch": 129,
+    "lookup_a": 0.9965579481356138,
+    "lookup_b": -0.003875927611427469
+   },
+   "stage2": {
+    "n_epochs": 16,
+    "best_epoch": 1,
+    "lambda_": 0.25,
+    "lookup_a": 0.312593748637964,
+    "lookup_b": 0.13682672261639447
+   }
+  },
+  "1": {
+   "seed": 1,
+   "paper_run": false,
+   "topn_pearson": 0.4337343713294779,
+   "topn_spearman": 0.3504173369911083,
+   "topn_mse": 0.2591535070869875,
+   "n_topn": 47,
+   "stage1": {
+    "n_epochs": 195,
+    "best_epoch": 180,
+    "lookup_a": 0.9965579481356138,
+    "lookup_b": -0.003875927611427469
+   },
+   "stage2": {
+    "n_epochs": 18,
+    "best_epoch": 3,
+    "lambda_": 0.5,
+    "lookup_a": 0.312593748637964,
+    "lookup_b": 0.13682672261639447
+   }
+  },
+  "2": {
+   "seed": 2,
+   "paper_run": false,
+   "topn_pearson": 0.4381696663906771,
+   "topn_spearman": 0.3546232490862421,
+   "topn_mse": 0.2590328638779052,
+   "n_topn": 47,
+   "stage1": {
+    "n_epochs": 95,
+    "best_epoch": 80,
+    "lookup_a": 0.9965579481356138,
+    "lookup_b": -0.003875927611427469
+   },
+   "stage2": {
+    "n_epochs": 17,
+    "best_epoch": 2,
+    "lambda_": 0.5,
+    "lookup_a": 0.312593748637964,
+    "lookup_b": 0.13682672261639447
+   }
+  }
+ }
+}
