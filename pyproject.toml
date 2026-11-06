@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "resonate-st"                      # `resonate` is taken on PyPI (a different project); the import name is `resonate`
-version = "0.1.0"
+version = "0.2.0"
 description = "RESONATE: predict genes never measured in a spatial transcriptomics panel from a matched single-cell reference and gene embeddings"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -40,7 +40,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "matplotlib"]
 notebook = ["jupyter", "ipykernel", "matplotlib"]   # to run the tutorial notebook
 
 [project.scripts]

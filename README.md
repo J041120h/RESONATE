@@ -46,13 +46,16 @@ refitting.
 RESONATE/
 ├── pyproject.toml                  # package metadata; `pip install .` installs the `resonate` import and command
 ├── environment.yml                 # conda environment (Python 3.11, CPU PyTorch; comment shows the CUDA variant)
-├── INSTALL.md                      # installation details: CPU, GPU, validated versions, hardware
+├── INSTALL.md                      # installation details: CPU, GPU, validated versions
 ├── CITATION.cff                    # how to cite (software + paper in preparation)
 ├── CHANGELOG.md
 ├── LICENSE                         # MIT
 ├── assets/figure1.png              # overview figure shown above
 ├── src/resonate/                   # the package
-│   ├── __init__.py                 # public API: prepare, fit, predict, Resonate, Prepared, Config, embeddings, score_heldout
+│   ├── __init__.py                 # public API: impute, score, datasets, pl, prepare, fit, predict, Resonate, Prepared, Config, ...
+│   ├── quick.py                    # one-call helpers: `impute` (prepare + fit + predict) and `score` (per-gene accuracy)
+│   ├── datasets.py                 # `fetal_heart_demo`: download, check and load the demo data
+│   ├── pl.py                       # plots: cell types, gene scores, measured vs predicted maps, cell-type heatmap
 │   ├── api.py                      # `fit`, the fitted model `Resonate` (predict, save, load), prediction of genes outside the fit targets
 │   ├── cli.py                      # `resonate prepare | fit | predict | run | download-embeddings | version`
 │   ├── config.py                   # `Config`: every setting, defaults = the paper model
@@ -80,24 +83,32 @@ RESONATE/
 
 ## Quick start
 
-Runs on a laptop-class CPU in about ten minutes with the sample data in this repository (clone it first, see
-[Installation](#installation)).
+Runs on a laptop CPU in about 8 minutes with the demo data (downloaded and checked by `fetal_heart_demo`).
 
 ```python
-import anndata as ad
 import resonate
 
-spatial   = ad.read_h5ad("sample_data/fetal_heart_spatial.h5ad")     # raw counts of the 236 measured genes, obsm["spatial"]
-reference = ad.read_h5ad("sample_data/fetal_heart_reference.h5ad")   # matched scRNA-seq reference, raw counts
-emb       = resonate.load_gene_embeddings("sample_data/scgpt_spatial_embeddings_subset.npz")
+spatial, reference, embeddings, held_out = resonate.datasets.fetal_heart_demo("data")
 
-# Short CPU run: at most 12 epochs per stage. resonate.Config() with no arguments gives the paper settings (GPU recommended).
+# predict two genes outside the 236-gene panel; also hide 48 panel genes to check accuracy
+pred = resonate.impute(spatial, reference, embeddings, genes=["NPPA", "MYL2"], heldout=held_out,
+                       device="cpu", max_epochs=12)          # leave out max_epochs (and device on a GPU) for the paper settings
+scores = resonate.score(pred, spatial)                     # per-gene Pearson / Spearman on the test cells
+resonate.pl.spatial_compare(pred, spatial, scores.index[:4], table=scores)   # measured vs predicted maps
+pred.write_h5ad("predictions.h5ad")
+```
+
+The tutorial notebook (<https://j041120h.github.io/RESONATE_tutorial/>) runs these steps with their outputs and plots.
+
+### Step by step
+
+```python
+spatial, reference, emb, held_out = resonate.datasets.fetal_heart_demo("data")
 cfg = resonate.Config(device="cpu", tf32=False, attn_bf16=False, max_epochs=12)
 
 prep  = resonate.prepare(spatial, reference, emb, target_genes=["NPPA", "NPPB", "HCN1"], config=cfg)
 model = resonate.fit(prep, cfg)                       # reference pre-training, then spatial fine-tuning
 pred  = model.predict()                               # AnnData: 12,000 cells x 3 genes, log-normalised
-pred.write_h5ad("predicted.h5ad")
 
 # Any other gene of the reference (with an embedding), without refitting:
 more = model.predict(["MYL7", "MYL2"], reference=reference, gene_embeddings=emb)
@@ -109,8 +120,7 @@ be requested from `predict`.
 ### Benchmark mode: hold out measured genes and score them
 
 ```python
-held_out = open("sample_data/held_out_genes.txt").read().split()      # 48 measured genes
-prep   = resonate.prepare(spatial, reference, emb, target_genes=held_out, config=cfg)   # removed from the model input
+prep   = resonate.prepare(spatial, reference, emb, target_genes=held_out, config=cfg)   # 48 measured genes, removed from the input
 model  = resonate.fit(prep, cfg)
 scores = resonate.score_heldout(prep, model.predict())                # test cells only
 print(scores["top_n"]["pearson"], scores["all_heldout"]["pearson"])
@@ -193,7 +203,7 @@ pip install -e . --no-deps
 ```
 
 For a CUDA build of PyTorch, install it first following <https://pytorch.org/get-started/locally/>, then install
-RESONATE. Validated versions, GPU notes and hardware needs: [`INSTALL.md`](INSTALL.md).
+RESONATE. Validated versions and GPU notes: [`INSTALL.md`](INSTALL.md).
 
 ---
 

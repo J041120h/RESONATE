@@ -87,22 +87,9 @@ also requires `numpy < 2` and `scanpy < 1.12`.
 
 ## Hardware
 
-Measured with the package on Linux (peak memory = maximum resident set size of the process).
-
-| workload | memory | time |
-|---|---|---|
-| sample data, quick start of the README (CPU, at most 12 epochs per stage) | **16 GB RAM or more recommended** (peak 10.1 GiB) | about 10 min on 4 CPU cores (`prepare` about 1 min, `fit` about 9 min) |
-| sample data, default training on the CPU (up to 500 epochs, early stopping) | peak about 11 GiB | `fit` about 19 min on 5 CPU cores |
-| MERFISH fetal heart, full dataset (250,926 spatial cells, 73,248 reference cells, 236 genes) | `prepare`: peak about 13 GB RAM | `prepare` about 33 min on 8 CPU cores; `fit` 11-14 min on one NVIDIA L40S GPU |
-
-A GPU is not needed for the sample data. For datasets of the size of the paper's (hundreds of thousands of cells), use a
-CUDA GPU for `fit`; `prepare` runs its nearest-neighbour searches on the GPU when `device="cuda"`, and Harmony runs on
-the CPU.
-
-For panels with thousands of genes the type-specific reference correlations take `T x G x G` floats (`T` reference cell
-types, `G` measured + target genes; about 2 GB for 16 types and 5,600 genes): choose a moderate target set at `prepare`
-time and predict further genes afterwards with `model.predict(genes, reference=..., gene_embeddings=...)`. For very
-large cell numbers, `Config(data_on_host=True)` keeps the cell x gene matrices in host memory.
+The demo data run on a laptop CPU in about 8 minutes (at least 16 GB of RAM). For datasets of hundreds of thousands of
+cells, use a CUDA GPU for `fit`; for panels with thousands of genes, choose a moderate target set at `prepare` time and
+predict further genes afterwards with `model.predict(genes, reference=..., gene_embeddings=...)`.
 
 ## Gene embeddings
 

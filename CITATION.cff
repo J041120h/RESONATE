@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below. The accompanying paper is in preparation (no DOI yet)."
 title: "RESONATE"
 type: software
-version: 0.1.0
+version: 0.2.0
 date-released: "2026-11-05"
 license: MIT
 repository-code: "https://github.com/J041120h/RESONATE"
