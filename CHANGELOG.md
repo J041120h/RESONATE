@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* `resonate run` now passes `--heldout-seed` to `prepare` (it always used seed 0 before).
+
 ## 0.1.0 (2026-11-05)
 
 First public release.

@@ -66,8 +66,8 @@ def _run(args):
     cfg = _config(args)
     genes = [g.strip() for g in open(args.targets).read().split() if g.strip()] if args.targets else None
     prep = prepare(ad.read_h5ad(args.spatial), ad.read_h5ad(args.reference), args.embeddings, target_genes=genes,
-                   heldout_fraction=args.heldout_fraction, section_key=args.section_key, batch_key=args.batch_key,
-                   label_key=args.label_key, config=cfg)
+                   heldout_fraction=args.heldout_fraction, heldout_seed=args.heldout_seed, section_key=args.section_key,
+                   batch_key=args.batch_key, label_key=args.label_key, config=cfg)
     model = fit(prep, cfg)
     model.predict().write_h5ad(args.out)
     print(f"wrote {args.out}")
